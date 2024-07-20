@@ -50,6 +50,34 @@ class SinleLinkedList:
                 # If deleting the head node
                 self.head = current.next
 
+    def delete_at_position(self, position):
+        if position < 0:
+            print("Invalid position. Position must be non-negative.")
+            return
+
+        current = self.head
+        prev = None
+        index = 0
+
+        # Traverse until we reach the desired position
+        while current and index < position:
+            print(index)
+            prev = current
+            current = current.next
+            index += 1
+
+        # If position exceeds the list length
+        if not current:
+            print(f"Position {position} is out of range.")
+            return
+
+        # Update pointers to skip the current node
+        if prev:
+            prev.next = current.next
+        else:
+            # If deleting the head node
+            self.head = current.next
+
     def print_list(self):
         current = self.head
         while current:
@@ -65,6 +93,10 @@ def main():
     linked_list.print_list()
     print("\nNow deleting the node with data 5.\n")
     linked_list.delete_node(5)
+    linked_list.print_list()
+    linked_list.insert_at_end(2)
+    print("\nDeleting node from linked list based on the position.\n")
+    linked_list.delete_at_position(8)
     linked_list.print_list()
 
 if __name__ == "__main__":
