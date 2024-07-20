@@ -27,6 +27,29 @@ class SinleLinkedList:
                 current = current.next
             current.next = new_node
 
+    def delete_node(self, key):
+            current = self.head
+            prev = None
+
+            # Traverse until we find the node with the given key
+            while current:
+                if current.data == key:
+                    break
+                prev = current
+                current = current.next
+
+            # If node not found
+            if current is None:
+                print(f"Node with key {key} not found.")
+                return
+
+            # Update pointers to skip the current node
+            if prev:
+                prev.next = current.next
+            else:
+                # If deleting the head node
+                self.head = current.next
+
     def print_list(self):
         current = self.head
         while current:
@@ -39,6 +62,9 @@ def main():
     linked_list.insert_at_beginning(5)
     linked_list.insert_at_end(6)
     linked_list.insert_at_beginning(7)
+    linked_list.print_list()
+    print("\nNow deleting the node with data 5.\n")
+    linked_list.delete_node(5)
     linked_list.print_list()
 
 if __name__ == "__main__":
