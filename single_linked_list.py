@@ -1,8 +1,5 @@
-class Node(object):
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-    
+from node import Node
+
 class SinleLinkedList:
     def __init__(self):
         self.head = None
